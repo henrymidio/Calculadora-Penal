@@ -25,17 +25,19 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080016;
+        public static final int action_settings=0x7f080018;
         public static final int anos=0x7f080001;
-        public static final int button2=0x7f080015;
+        public static final int button2=0x7f080017;
         public static final int calcular=0x7f080010;
         public static final int dias=0x7f080003;
         public static final int doisQuintos=0x7f080009;
-        public static final int editAcusado=0x7f080012;
-        public static final int editProcesso=0x7f080013;
-        public static final int gridview=0x7f080014;
+        public static final int editAcusado=0x7f080014;
+        public static final int editProcesso=0x7f080015;
+        public static final int gridview=0x7f080016;
         public static final int inicioPena=0x7f08000e;
+        public static final int itemAcusados=0x7f080019;
         public static final int linearLayout1=0x7f080000;
+        public static final int listView1=0x7f080013;
         public static final int meses=0x7f080002;
         public static final int primario=0x7f08000c;
         public static final int radioGroup1=0x7f08000b;
@@ -48,19 +50,26 @@ public final class R {
         public static final int textView5=0x7f080011;
         public static final int tresQuintos=0x7f08000a;
         public static final int umSexto=0x7f080008;
+        public static final int webView1=0x7f080012;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int layout_resultado=0x7f030001;
+        public static final int layout_lep=0x7f030001;
+        public static final int layout_lista=0x7f030002;
+        public static final int layout_resultado=0x7f030003;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
-        public static final int resultado=0x7f070001;
+        public static final int lep=0x7f070000;
+        public static final int lista=0x7f070001;
+        public static final int main=0x7f070002;
+        public static final int resultado=0x7f070003;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
+        public static final int title_activity_lep=0x7f050005;
+        public static final int title_activity_lista=0x7f050004;
         public static final int title_activity_resultado=0x7f050003;
     }
     public static final class style {

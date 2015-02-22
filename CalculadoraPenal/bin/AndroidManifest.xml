@@ -26,6 +26,14 @@
             android:name=".Resultado"
             android:label="@string/title_activity_resultado" >
         </activity>
+        <activity
+            android:name=".Lista"
+            android:label="@string/title_activity_lista" >
+        </activity>
+        <activity
+            android:name=".Lep"
+            android:label="@string/title_activity_lep" >
+        </activity>
     </application>
 
 </manifest>
