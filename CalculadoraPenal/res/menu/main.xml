@@ -3,9 +3,18 @@
     tools:context="br.com.henrique.calculadorapenal.MainActivity" >
 
     <item
-        android:id="@+id/itemAcusados"
-        android:orderInCategory="100"
-        android:showAsAction="always"
-        android:title="@string/action_settings"/>
+        android:id="@+id/file"
+        android:icon="@drawable/ic_action_overflow"
+        android:showAsAction="ifRoom"
+        android:title="overflow">
+        <menu>
+            <item
+                android:id="@+id/itemArquivo"
+                android:title="Arquivo"/>
+            <item
+                android:id="@+id/itemLEP"
+                android:title="L.E.P"/>
+        </menu>
+    </item>
 
 </menu>

@@ -1,8 +1,14 @@
 package br.com.henrique.calculadorapenal;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,12 +16,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	private int anos = 0;
-	private int meses = 0;
-	private int dias = 0;
+	private int condenacaoAnos = 0;
+	private int condenacaoMeses = 0;
+	private int condenacaoDias = 0;
 	private boolean primario = true;
 	private String data;
 	private int fracao = 1;
@@ -34,6 +41,7 @@ public class MainActivity extends Activity {
 	private int inicioDias;
 	private int inicioMeses;
 	private int inicioAnos;
+	private int[] condenacao;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +80,17 @@ public class MainActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.itemArquivo) {
+			Intent intent = new Intent(this, Lista.class);
+			startActivity(intent);
 			return true;
 		}
+		if (id == R.id.itemLEP) {
+			Intent intent = new Intent(this, Lep.class);
+			startActivity(intent);
+			return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -143,13 +159,22 @@ public class MainActivity extends Activity {
 	public void calcularPena(View view) {
 
 		// Recupera dados de entrada do usuário
-		anos = Integer.parseInt(editAnos.getText().toString());
-		meses = Integer.parseInt(editMeses.getText().toString());
-		dias = Integer.parseInt(editDias.getText().toString());
+		condenacao = new int[3];
+		condenacao[0] = Integer.parseInt(editAnos.getText().toString());
+		condenacao[1] = Integer.parseInt(editMeses.getText().toString());
+		condenacao[2] = Integer.parseInt(editDias.getText().toString());
 
 		inicioDias = dp.getDayOfMonth();
 		inicioMeses = dp.getMonth();
 		inicioAnos = dp.getYear();
+		Calendar dataInicio = new GregorianCalendar(inicioAnos, inicioMeses,
+				inicioDias);
+
+		Pena pena = new Pena(condenacao, fracao, primario, dataInicio);
+
+		Intent intent = new Intent(this, Resultado.class);
+		intent.putExtra("Pena", pena);
+		startActivity(intent);
 
 	}
 }

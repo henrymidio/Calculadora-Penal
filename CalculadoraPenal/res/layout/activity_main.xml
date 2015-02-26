@@ -31,7 +31,9 @@ android:layout_height="match_parent">
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number" >
+            <requestFocus />
+            </EditText>
 
         <EditText
             android:id="@+id/meses"
@@ -41,7 +43,7 @@ android:layout_height="match_parent">
             android:ems="10"
             android:inputType="number" >
 
-            <requestFocus />
+            
         </EditText>
 
         <EditText
@@ -166,11 +168,12 @@ android:layout_height="match_parent">
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/calcular"
+        android:id="@+id/botaoCalcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/inicioPena"
         android:layout_below="@+id/textView4"
+        android:onClick="calcularPena"
         android:layout_marginTop="23dp"
         android:text="Calcular" />
 

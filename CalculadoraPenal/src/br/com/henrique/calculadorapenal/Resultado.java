@@ -4,13 +4,40 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.Toast;
 
 public class Resultado extends Activity {
+
+	private EditText campoAcusado;
+	private EditText campoProcesso;
+	private GridView gv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_resultado);
+
+		// Recupera dados da Intent
+		Pena pena = (Pena) getIntent().getSerializableExtra("Pena");
+
+		String[] tabela = new String[] { "Progressão", pena.getProgressao(),
+				"Condicional", pena.getCondicional() };
+
+		// Recupera views
+		campoAcusado = (EditText) findViewById(R.id.editAcusado);
+		campoProcesso = (EditText) findViewById(R.id.editProcesso);
+		gv = (GridView) findViewById(R.id.gridview);
+		
+
+		// Seta griedview
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, tabela);
+		gv.setAdapter(adapter);
+
 	}
 
 	@Override
@@ -31,4 +58,5 @@ public class Resultado extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
 }

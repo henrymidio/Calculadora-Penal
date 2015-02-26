@@ -94,9 +94,10 @@
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
+                android:onClick="salvar"
                 android:text="Salvar" />
 
         </RelativeLayout>
