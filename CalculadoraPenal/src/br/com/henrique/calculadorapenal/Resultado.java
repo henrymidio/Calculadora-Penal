@@ -1,7 +1,9 @@
 package br.com.henrique.calculadorapenal;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,11 +17,17 @@ public class Resultado extends Activity {
 	private EditText campoAcusado;
 	private EditText campoProcesso;
 	private GridView gv;
+	private ActionBar ab;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_resultado);
+		
+		ab = getActionBar();
+		ab.setDisplayHomeAsUpEnabled(true);
+		ab.setDisplayShowTitleEnabled(false);
+		ab.setIcon(R.drawable.ic_action_back);
 
 		// Recupera dados da Intent
 		Pena pena = (Pena) getIntent().getSerializableExtra("Pena");
@@ -44,6 +52,7 @@ public class Resultado extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.resultado, menu);
+		
 		return true;
 	}
 
@@ -53,10 +62,25 @@ public class Resultado extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == android.R.id.home) {
+			finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void salvar(View view){
+		
+		EditText eNome = (EditText) findViewById(R.id.editAcusado);
+		EditText eProcesso = (EditText) findViewById(R.id.editAcusado);
+		String nome = eNome.getText().toString();
+		String processo = eProcesso.getText().toString();
+		
+		BDCore bdc = new BDCore(this);
+		boolean res = bdc.addAcusado(nome, processo);
+		Log.d("RESULT", ""+res);  
+		
+		
 	}
 
 }

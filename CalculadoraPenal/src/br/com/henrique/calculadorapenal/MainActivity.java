@@ -20,11 +20,8 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	private int condenacaoAnos = 0;
-	private int condenacaoMeses = 0;
-	private int condenacaoDias = 0;
 	private boolean primario = true;
-	private String data;
+
 	private int fracao = 1;
 
 	private EditText editAnos;
@@ -37,7 +34,7 @@ public class MainActivity extends Activity {
 	private Button tresQuintos;
 	private RadioButton rb3;
 	private RadioButton rb2;
-	private DatePicker dp2;
+
 	private int inicioDias;
 	private int inicioMeses;
 	private int inicioAnos;
@@ -49,8 +46,11 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		editAnos = (EditText) findViewById(R.id.anos);
+		editAnos.setText("0");
 		editMeses = (EditText) findViewById(R.id.meses);
+		editMeses.setText("0");
 		editDias = (EditText) findViewById(R.id.dias);
+		editDias.setText("0");
 		dp = (DatePicker) findViewById(R.id.inicioPena);
 
 		umSexto = (Button) findViewById(R.id.umSexto);
@@ -62,8 +62,6 @@ public class MainActivity extends Activity {
 
 		rb3 = (RadioButton) findViewById(R.id.reincidente);
 		rb2 = (RadioButton) findViewById(R.id.primario);
-
-		dp2 = (DatePicker) findViewById(R.id.inicioPena);
 
 	}
 
