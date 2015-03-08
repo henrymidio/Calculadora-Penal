@@ -41,7 +41,7 @@ public final class R {
         public static final int itemArquivo=0x7f08001a;
         public static final int itemLEP=0x7f08001b;
         public static final int linearLayout1=0x7f080000;
-        public static final int listView1=0x7f080013;
+        public static final int lista=0x7f080013;
         public static final int meses=0x7f080002;
         public static final int primario=0x7f08000c;
         public static final int radioGroup1=0x7f08000b;

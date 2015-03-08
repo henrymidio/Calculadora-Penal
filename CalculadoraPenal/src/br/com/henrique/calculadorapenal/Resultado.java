@@ -18,6 +18,7 @@ public class Resultado extends Activity {
 	private EditText campoProcesso;
 	private GridView gv;
 	private ActionBar ab;
+	private Pena pena;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,7 @@ public class Resultado extends Activity {
 		ab.setDisplayShowTitleEnabled(false);
 		ab.setIcon(R.drawable.ic_action_back);
 
-		// Recupera dados da Intent
-		Pena pena = (Pena) getIntent().getSerializableExtra("Pena");
+		pena = (Pena) getIntent().getSerializableExtra("Pena");
 
 		String[] tabela = new String[] { "Progressão", pena.getProgressao(),
 				"Condicional", pena.getCondicional() };
@@ -72,12 +72,12 @@ public class Resultado extends Activity {
 	public void salvar(View view){
 		
 		EditText eNome = (EditText) findViewById(R.id.editAcusado);
-		EditText eProcesso = (EditText) findViewById(R.id.editAcusado);
+		EditText eProcesso = (EditText) findViewById(R.id.editProcesso);
 		String nome = eNome.getText().toString();
 		String processo = eProcesso.getText().toString();
 		
 		BDCore bdc = new BDCore(this);
-		boolean res = bdc.addAcusado(nome, processo);
+		boolean res = bdc.addAcusado(nome, processo, pena.getProgressao(), pena.getCondicional());
 		Log.d("RESULT", ""+res);  
 		
 		

@@ -6,7 +6,7 @@
     tools:context="br.com.henrique.calculadorapenal.Lista" >
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
