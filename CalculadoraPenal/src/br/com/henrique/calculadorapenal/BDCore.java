@@ -57,7 +57,9 @@ public class BDCore extends SQLiteOpenHelper {
 			throw new SQLException();
 
 		} else
-
+			
+			Log.d("PROG", progressao);
+			
 			return true;
 	}
 
@@ -80,7 +82,8 @@ public class BDCore extends SQLiteOpenHelper {
 			} while (cursor.moveToNext());
 
 		}
-
+		cursor.close();
+		
 		return nomes;
 	}
 
@@ -110,7 +113,9 @@ public class BDCore extends SQLiteOpenHelper {
 			} while (mCursor.moveToNext());
 
 		}
-
+		
+		mCursor.close();
+		
 		return dados;
 	}
 }

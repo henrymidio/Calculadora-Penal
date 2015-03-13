@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,8 +42,17 @@ public class Lista extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
-				bdc.selecionaDadosAcusado(acusados.get(position));
+				
+				List<String> dados = bdc.selecionaDadosAcusado(acusados
+						.get(position));
+				new AlertDialog.Builder(Lista.this)
+						.setTitle("Calculadora Penal")
+						.setIcon(R.drawable.ic_launcher)
+						.setMessage(
+								"Nome: " + dados.get(0) + "\n" + "Processo: "
+										+ dados.get(1) + "\n" + "Progressão: "
+										+ dados.get(2) + "\n" + "Condicional: "
+										+ dados.get(3)).show();
 			}
 		});
 	}

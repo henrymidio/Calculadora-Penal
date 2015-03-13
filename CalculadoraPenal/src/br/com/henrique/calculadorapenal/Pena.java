@@ -15,6 +15,9 @@ public class Pena implements Serializable {
 	boolean primariedade;
 	Calendar inicioPena;
 	private int diasPena;
+	private String progressao;
+	private String condicional;
+	
 
 	public Pena(int[] condenacao, int fracao, boolean primariedade,
 			Calendar inicioPena) {
@@ -23,6 +26,9 @@ public class Pena implements Serializable {
 		this.fracao = fracao;
 		this.inicioPena = inicioPena;
 		this.primariedade = primariedade;
+		
+		progressao = calculaProgressao();
+		condicional = calculaCondicional();
 
 	}
 
@@ -118,11 +124,11 @@ public class Pena implements Serializable {
 	}
 
 	public String getProgressao() {
-		return calculaProgressao();
+		return progressao;
 	}
 
 	public String getCondicional() {
-		return calculaCondicional();
+		return condicional;
 	}
 
 }
