@@ -30,7 +30,8 @@ public class BDCore extends SQLiteOpenHelper {
 
 		db.execSQL("CREATE TABLE IF NOT EXISTS " + TABELA_01
 				+ " (_ID integer primary key autoincrement, "
-				+ "NOME varchar(45) not null, " + "PROCESSO varchar(20) not null, "
+				+ "NOME varchar(45) not null, "
+				+ "PROCESSO varchar(20) not null, "
 				+ "PROGRESSAO varchar(18) not null, "
 				+ "CONDICIONAL varchar(18) not null);");
 
@@ -57,10 +58,16 @@ public class BDCore extends SQLiteOpenHelper {
 			throw new SQLException();
 
 		} else
-			
+
 			Log.d("PROG", progressao);
-			
-			return true;
+
+		return true;
+	}
+
+	public void deletaAcusado(String nome) {
+
+		wd.delete(TABELA_01, "NOME=" + "'"+nome+"'", null);
+
 	}
 
 	public List<String> selecionaNomesAcusado() {
@@ -83,7 +90,7 @@ public class BDCore extends SQLiteOpenHelper {
 
 		}
 		cursor.close();
-		
+
 		return nomes;
 	}
 
@@ -91,8 +98,9 @@ public class BDCore extends SQLiteOpenHelper {
 
 		List<String> dados = new ArrayList<String>();
 
-		Cursor mCursor = wd.rawQuery("SELECT NOME, PROCESSO, PROGRESSAO, CONDICIONAL FROM ACUSADO "
-				+ "WHERE ACUSADO.NOME = '" + nome + "'", null);
+		Cursor mCursor = wd.rawQuery(
+				"SELECT NOME, PROCESSO, PROGRESSAO, CONDICIONAL FROM ACUSADO "
+						+ "WHERE ACUSADO.NOME = '" + nome + "'", null);
 
 		if (mCursor.getCount() > 0) {
 
@@ -113,9 +121,9 @@ public class BDCore extends SQLiteOpenHelper {
 			} while (mCursor.moveToNext());
 
 		}
-		
+
 		mCursor.close();
-		
+
 		return dados;
 	}
 }

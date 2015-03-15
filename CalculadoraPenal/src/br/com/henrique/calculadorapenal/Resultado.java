@@ -2,6 +2,7 @@ package br.com.henrique.calculadorapenal;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,7 +25,7 @@ public class Resultado extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_resultado);
-		
+
 		ab = getActionBar();
 		ab.setDisplayHomeAsUpEnabled(true);
 		ab.setDisplayShowTitleEnabled(false);
@@ -39,7 +40,6 @@ public class Resultado extends Activity {
 		campoAcusado = (EditText) findViewById(R.id.editAcusado);
 		campoProcesso = (EditText) findViewById(R.id.editProcesso);
 		gv = (GridView) findViewById(R.id.gridview);
-		
 
 		// Seta griedview
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -52,7 +52,7 @@ public class Resultado extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.resultado, menu);
-		
+
 		return true;
 	}
 
@@ -68,19 +68,22 @@ public class Resultado extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public void salvar(View view){
-		
+
+	public void salvar(View view) {
+
 		EditText eNome = (EditText) findViewById(R.id.editAcusado);
 		EditText eProcesso = (EditText) findViewById(R.id.editProcesso);
 		String nome = eNome.getText().toString();
 		String processo = eProcesso.getText().toString();
-		
+
 		BDCore bdc = new BDCore(this);
-		boolean res = bdc.addAcusado(nome, processo, pena.getProgressao(), pena.getCondicional());
-		Log.d("RESULT", ""+res);  
-		
-		
+		boolean res = bdc.addAcusado(nome, processo, pena.getProgressao(),
+				pena.getCondicional());
+		if (res) {
+			Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT).show();
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+		}
 	}
 
 }

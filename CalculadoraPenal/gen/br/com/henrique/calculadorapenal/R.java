@@ -23,23 +23,25 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_action_back=0x7f020000;
-        public static final int ic_action_overflow=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
+        public static final int ic_action_discard=0x7f020001;
+        public static final int ic_action_overflow=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080018;
+        public static final int action_settings=0x7f080019;
         public static final int anos=0x7f080001;
         public static final int botaoCalcular=0x7f080010;
         public static final int button2=0x7f080017;
+        public static final int delete=0x7f080018;
         public static final int dias=0x7f080003;
         public static final int doisQuintos=0x7f080009;
         public static final int editAcusado=0x7f080014;
         public static final int editProcesso=0x7f080015;
-        public static final int file=0x7f080019;
+        public static final int file=0x7f08001a;
         public static final int gridview=0x7f080016;
         public static final int inicioPena=0x7f08000e;
-        public static final int itemArquivo=0x7f08001a;
-        public static final int itemLEP=0x7f08001b;
+        public static final int itemArquivo=0x7f08001b;
+        public static final int itemLEP=0x7f08001c;
         public static final int linearLayout1=0x7f080000;
         public static final int lista=0x7f080013;
         public static final int meses=0x7f080002;
@@ -63,10 +65,11 @@ public final class R {
         public static final int layout_resultado=0x7f030003;
     }
     public static final class menu {
-        public static final int lep=0x7f070000;
-        public static final int lista=0x7f070001;
-        public static final int main=0x7f070002;
-        public static final int resultado=0x7f070003;
+        public static final int context_action=0x7f070000;
+        public static final int lep=0x7f070001;
+        public static final int lista=0x7f070002;
+        public static final int main=0x7f070003;
+        public static final int resultado=0x7f070004;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;

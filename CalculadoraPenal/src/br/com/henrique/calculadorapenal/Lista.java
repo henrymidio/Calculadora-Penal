@@ -1,16 +1,25 @@
 package br.com.henrique.calculadorapenal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnLongClickListener;
+import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -18,6 +27,8 @@ import android.widget.ListView;
 public class Lista extends Activity {
 
 	private ActionBar ab;
+	private BDCore bdc;
+	private List<String> acusados;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +40,22 @@ public class Lista extends Activity {
 		ab.setDisplayShowTitleEnabled(false);
 		ab.setIcon(R.drawable.ic_action_back);
 
-		final BDCore bdc = new BDCore(this);
-		final List<String> acusados = bdc.selecionaNomesAcusado();
+		bdc = new BDCore(this);
+		acusados = bdc.selecionaNomesAcusado();
 
 		ArrayAdapter<String> aa = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, acusados);
 
 		ListView lv = (ListView) findViewById(R.id.lista);
+		registerForContextMenu(lv);
 		lv.setAdapter(aa);
+
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 				List<String> dados = bdc.selecionaDadosAcusado(acusados
 						.get(position));
 				new AlertDialog.Builder(Lista.this)
@@ -55,6 +68,30 @@ public class Lista extends Activity {
 										+ dados.get(3)).show();
 			}
 		});
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		// TODO Auto-generated method stub
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.context_action, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		switch (item.getItemId()) {
+		case R.id.delete:
+			bdc.deletaAcusado(acusados.get(info.position));
+			info.targetView.setVisibility(View.GONE);
+			
+			return true;
+		default:
+			return super.onContextItemSelected(item);
+		}
 	}
 
 	@Override
